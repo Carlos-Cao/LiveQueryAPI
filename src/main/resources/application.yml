@@ -1,3 +1,6 @@
 spring:
   application:
     name: livequery
+
+api:
+  version: v1
