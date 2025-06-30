@@ -1,8 +1,6 @@
 package com.api.livequery.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
@@ -12,6 +10,7 @@ import java.util.List;
 public class Questions {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int questionId;
 
     public String name;
@@ -20,6 +19,7 @@ public class Questions {
 
     public String description;
 
-    @OneToMany
-    public List<Comments> comments;
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "question_id")
+    private List<Comments> comments;
 }
