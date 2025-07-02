@@ -9,9 +9,9 @@ public interface CommentsService {
 
     Comments addComment(Comments comments);
 
-    Optional<Comments> getCommentById(int commentId);
+    Optional<Comments> getCommentById(Integer commentId);
 
-    void deleteComment(int commentId);
+    void deleteComment(Integer commentId);
 
     List<Comments> getAllComments();
 }

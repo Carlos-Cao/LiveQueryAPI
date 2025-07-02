@@ -9,9 +9,9 @@ public interface QuestionsService {
 
     Questions addQuestion(Questions questions);
 
-    Optional<Questions> getQuestionById(int questionId);
+    Optional<Questions> getQuestionById(Integer questionId);
 
-    void deleteQuestion(int questionId);
+    void deleteQuestion(Integer questionId);
 
     List<Questions> getAllQuestions();
 }
