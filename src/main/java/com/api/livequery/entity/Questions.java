@@ -1,6 +1,7 @@
 package com.api.livequery.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.util.List;
@@ -11,15 +12,17 @@ public class Questions {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int questionId;
+    private int questionId;
 
-    public String name;
+    @NotBlank(message = "Name is required")
+    private String name;
 
-    public String question;
+    @NotBlank(message = "Question is required")
+    private String question;
 
-    public String description;
+    private String description;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "question_id")
     private List<Comments> comments;
 }

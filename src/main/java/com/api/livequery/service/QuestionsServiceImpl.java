@@ -3,6 +3,7 @@ package com.api.livequery.service;
 import com.api.livequery.entity.Questions;
 import com.api.livequery.repository.QuestionsRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,22 +13,24 @@ public class QuestionsServiceImpl implements QuestionsService{
 
     private final QuestionsRepository questionsRepository;
 
-    public QuestionsServiceImpl(QuestionsRepository questionsRepository) {
+    public QuestionsServiceImpl(final QuestionsRepository questionsRepository) {
         this.questionsRepository = questionsRepository;
     }
 
     @Override
-    public Questions addQuestion(Questions questions) {
+    @Transactional
+    public Questions addQuestion(final Questions questions) {
         return questionsRepository.save(questions);
     }
 
     @Override
-    public Optional<Questions> getQuestionById(int questionId) {
+    public Optional<Questions> getQuestionById(final Integer questionId) {
         return questionsRepository.findById(questionId);
     }
 
     @Override
-    public void deleteQuestion(int questionId) {
+    @Transactional
+    public void deleteQuestion(final Integer questionId) {
         questionsRepository.deleteById(questionId);
     }
 
