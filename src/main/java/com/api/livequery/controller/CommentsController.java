@@ -36,7 +36,7 @@ public class CommentsController {
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
-    @GetMapping(path = "/comments/{commentsId}", produces = "application/json")
+    @GetMapping(path = "/comments/{commentId}", produces = "application/json")
     public ResponseEntity<Comments> getCommentById(@PathVariable Integer commentId) {
         Optional<Comments> comment = commentsService.getCommentById(commentId);
         if (comment.isPresent()) {
@@ -48,7 +48,7 @@ public class CommentsController {
         }
     }
 
-    @DeleteMapping(path = "/comments/{commentsId}")
+    @DeleteMapping(path = "/comments/{commentId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCommentById(@PathVariable Integer commentId) {
         commentsService.deleteComment(commentId);
