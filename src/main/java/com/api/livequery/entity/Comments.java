@@ -5,6 +5,10 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+/**
+ * Comments entity represents a comment in the system.
+ * It contains fields for comment ID, name, comment text, and associated question ID.
+ */
 @Entity
 @Data
 public class Comments {

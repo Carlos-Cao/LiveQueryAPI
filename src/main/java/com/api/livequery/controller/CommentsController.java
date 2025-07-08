@@ -18,6 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * CommentsController handles HTTP requests related to comments.
+ * It provides endpoints to create, retrieve, delete, and list comments.
+ */
 @RestController
 @Slf4j
 @RequestMapping("/api/${api.version}")
@@ -25,10 +29,21 @@ public class CommentsController {
 
     private final CommentsServiceImpl commentsService;
 
+    /**
+     * Constructor for CommentsController.
+     *
+     * @param commentsService the service to handle comment operations
+     */
     public CommentsController(CommentsServiceImpl commentsService) {
         this.commentsService = commentsService;
     }
 
+    /**
+     * Endpoint to create a new comment.
+     *
+     * @param comment the comment to be created
+     * @return ResponseEntity with the created comment and HTTP status 201 (Created)
+     */
     @PostMapping(path = "/comments", produces = "application/json")
     public ResponseEntity<Comments> postComments(@Valid @RequestBody Comments comment) {
         Comments saved = commentsService.addComment(comment);
@@ -36,6 +51,12 @@ public class CommentsController {
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
 
+    /**
+     * Endpoint to retrieve a comment by its ID.
+     *
+     * @param commentId the ID of the comment to retrieve
+     * @return ResponseEntity with the found comment or HTTP status 404 (Not Found) if not found
+     */
     @GetMapping(path = "/comments/{commentId}", produces = "application/json")
     public ResponseEntity<Comments> getCommentById(@PathVariable Integer commentId) {
         Optional<Comments> comment = commentsService.getCommentById(commentId);
@@ -48,6 +69,11 @@ public class CommentsController {
         }
     }
 
+    /**
+     * Endpoint to delete a comment by its ID.
+     *
+     * @param commentId the ID of the comment to delete
+     */
     @DeleteMapping(path = "/comments/{commentId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCommentById(@PathVariable Integer commentId) {
@@ -55,6 +81,11 @@ public class CommentsController {
         log.info("Deleting comment with ID: {}", commentId);
     }
 
+    /**
+     * Endpoint to retrieve all comments.
+     *
+     * @return List of all comments
+     */
     @GetMapping(path = "/comments/all", produces = "application/json")
     public List<Comments> getComments() {
         List<Comments> comments = commentsService.getAllComments();

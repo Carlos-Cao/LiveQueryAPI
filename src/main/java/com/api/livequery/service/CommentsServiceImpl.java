@@ -8,6 +8,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * CommentsServiceImpl implements the CommentsService interface.
+ * It provides methods to manage comments in the system, including adding,
+ * retrieving, deleting, and listing comments.
+ */
 @Service
 public class CommentsServiceImpl implements CommentsService{
 
