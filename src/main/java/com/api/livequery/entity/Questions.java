@@ -6,6 +6,10 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * Questions entity represents a question in the system.
+ * It contains fields for question ID, name, question, description, and a list of associated comments.
+ */
 @Entity
 @Data
 public class Questions {

@@ -8,6 +8,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * QuestionsServiceImpl implements the QuestionsService interface.
+ * It provides methods to manage questions in the system, including adding,
+ * retrieving, deleting, and listing questions.
+ */
 @Service
 public class QuestionsServiceImpl implements QuestionsService{
 
