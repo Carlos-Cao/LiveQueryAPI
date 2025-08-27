@@ -10,5 +10,5 @@ CREATE TABLE comments (
     name VARCHAR(255),
     comment TEXT NOT NULL,
     question_id INT NOT NULL,
-    FOREIGN KEY (question_id) REFERENCES questions(question_id)
+    FOREIGN KEY (question_id) REFERENCES questions(question_id) ON DELETE CASCADE
 );
